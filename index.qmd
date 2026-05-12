@@ -1,5 +1,5 @@
 ---
-title: "MODELOS DISCRETOS DE PROBABILIDAD"  # Título principal del documento
+title: "MODELOS DISCRETOS DE PROBABILIDAD 1"  # Título principal del documento
 subtitle: "TIPOS DE DISTRIBUCIÓN DISCRETA DE PROBABILIDAD"  # Subtítulo del documento
 date: today  # Fecha actual en formato español
 author:  # Información sobre los autores
