@@ -1683,16 +1683,19 @@ Objetivo: Probabilidad de exactamente 2 mujeres.
 ## Tabla
 
 ```{r}
-N <- 15
-K <- 5 # Mujeres (éxito buscado)
-n_muestra <- 3
-x <- 0:3
-fx <- round(dhyper(x, m = K, n = N - K, k = n_muestra), 4)
+N <- 10
+K <- 6
+n <- 5
+x <- 0:K
+# dhyper(x, m, n_rest, k) -> m=éxitos (buen estado), n_rest=fracasos, k=muestra
+fx <- round(dhyper(x, m = K, n = N - K, k = n), 4)
 Fx <- round(cumsum(fx), 4)
-df_comite = data.frame(x, fx, Fx)
-kable(df_comite, align = "c") %>% 
+df = data.frame(x, fx, Fx)
+Form.Basic <- c("striped", "bordered", "hover", "condensed", "responsive")
+kable(df, align = "c") %>% 
   kable_styling("striped", full_width = F) %>%
-  row_spec(0:4, bold = T, color = "#f7f2f2", background = "#5c61cc")
+  column_spec(1, bold = T) %>%
+  row_spec(0:7, bold = T, color = "#f7f2f2", background = "#5c61cc")
 ```
 
 ## Distribución de Probabilidad
@@ -1733,11 +1736,19 @@ cat("La probabilidad calculada es:", prob_b)
 La probabilidad de elegir exactamente 2 mujeres para el comité es del 21.98%.
 
 ## Gráfica
+```{r}
+x <- 0:3
+fx <- dhyper(x, m = 5, n = 10, k = 3)
+
+df_comite <- data.frame(x, fx)
+```
+
 
 ```{r}
-ggplot(df_comite, aes(x = x, y = fx, fill=factor(ifelse(x==2,"Valor","Resto")))) +
-geom_bar(stat = "identity", width = 0.4) + 
-scale_fill_manual(name = "", values=c("#fab27a","#5c61cc")) + theme_bw()
+ggplot(df_comite, aes(x = x, y = fx, fill = factor(ifelse(x == 2, "Valor", "Resto")))) +
+geom_bar(stat = "identity", width = 0.4) +
+scale_fill_manual(name = "", values = c("#fab27a", "#5c61cc")) +
+theme_bw()
 ```
 En esta distribución, observamos que las barras más altas corresponden a $x=1$ y $x=0$. Al elegir solo a 3 personas de un grupo donde las mujeres son minoría ($1/3$ del total), la gráfica nos muestra que lo más esperado es que el comité tenga 1 mujer o ninguna. La probabilidad de tener exactamente 2 mujeres (21.98%) se muestra como una barra de altura media, indicando que, aunque no es el resultado más probable, es una posibilidad real en el muestreo aleatorio.
 :::
@@ -1762,16 +1773,16 @@ Objetivo: Probabilidad de al menos uno defectuoso ($x \ge 1$).
 ## Tabla
 
 ```{r}
-N <- 12
-K <- 3
-n_muestra <- 5
-x <- 0:K
-fx <- round(dhyper(x, m = K, n = N - K, k = n_muestra), 4)
-Fx <- round(cumsum(fx), 4)
-df_frascos = data.frame(x, fx, Fx)
-kable(df_frascos, align = "c") %>% 
+lambda <- 3
+x <- 0:10 # Tomamos hasta 10 para visualizar la tendencia
+fx <- round(dpois(x, lambda), 4)
+Fx <- round(ppois(x, lambda), 4)
+df = data.frame(x, fx, Fx)
+Form.Basic <- c("striped", "bordered", "hover", "condensed", "responsive")
+kable(df, align = "c") %>% 
   kable_styling("striped", full_width = F) %>%
-  row_spec(0:4, bold = T, color = "#f7f2f2", background = "#5c61cc")
+  column_spec(1, bold = T) %>%
+  row_spec(0:11, bold = T, color = "#f7f2f2", background = "#5c61cc")
 ```
 
 ## Distribución de Probabilidad

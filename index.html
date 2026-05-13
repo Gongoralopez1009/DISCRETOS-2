@@ -160,7 +160,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Fecha de publicación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">11 de mayo de 2026</p>
+        <p class="date">13 de mayo de 2026</p>
       </div>
     </div>
     
@@ -3308,16 +3308,19 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># Mujeres (éxito buscado)</span></span>
-<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>n_muestra <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(x, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n_muestra), <span class="dv">4</span>)</span>
-<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fx), <span class="dv">4</span>)</span>
-<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>df_comite <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
-<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df_comite, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb132-9"><a href="#cb132-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
-<span id="cb132-10"><a href="#cb132-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>K</span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dhyper(x, m, n_rest, k) -&gt; m=éxitos (buen estado), n_rest=fracasos, k=muestra</span></span>
+<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(x, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
+<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fx), <span class="dv">4</span>)</span>
+<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
+<span id="cb132-9"><a href="#cb132-9" aria-hidden="true" tabindex="-1"></a>Form.Basic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"bordered"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>)</span>
+<span id="cb132-10"><a href="#cb132-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb132-11"><a href="#cb132-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb132-12"><a href="#cb132-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb132-13"><a href="#cb132-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
@@ -3330,23 +3333,38 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2637</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2637</td>
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
 </tr>
 <tr class="even">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.4945</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.7582</td>
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0238</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0238</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2198</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9780</td>
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2381</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2619</td>
 </tr>
 <tr class="even">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0220</td>
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.4762</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.7381</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">4</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2381</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9762</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">5</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0238</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">6</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
 <td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
 </tr>
 </tbody>
@@ -3417,14 +3435,24 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_comite, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">==</span><span class="dv">2</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
-<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span> </span>
-<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">dhyper</span>(x, <span class="at">m =</span> <span class="dv">5</span>, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a>df_comite <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, fx)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_comite, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx, <span class="at">fill =</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">2</span>, <span class="st">"Valor"</span>, <span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#fab27a"</span>, <span class="st">"#5c61cc"</span>)) <span class="sc">+</span></span>
+<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-87-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-88-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -3452,16 +3480,16 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">12</span></span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a>n_muestra <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>K</span>
-<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(x, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n_muestra), <span class="dv">4</span>)</span>
-<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fx), <span class="dv">4</span>)</span>
-<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a>df_frascos <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
-<span id="cb138-8"><a href="#cb138-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df_frascos, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb138-9"><a href="#cb138-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
-<span id="cb138-10"><a href="#cb138-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># Tomamos hasta 10 para visualizar la tendencia</span></span>
+<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dpois</span>(x, lambda), <span class="dv">4</span>)</span>
+<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">ppois</span>(x, lambda), <span class="dv">4</span>)</span>
+<span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
+<span id="cb139-6"><a href="#cb139-6" aria-hidden="true" tabindex="-1"></a>Form.Basic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"bordered"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>)</span>
+<span id="cb139-7"><a href="#cb139-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb139-8"><a href="#cb139-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb139-9"><a href="#cb139-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb139-10"><a href="#cb139-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
@@ -3474,24 +3502,59 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.1591</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.1591</td>
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0498</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0498</td>
 </tr>
 <tr class="even">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.4773</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.6364</td>
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.1494</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.1991</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.3182</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9546</td>
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2240</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.4232</td>
 </tr>
 <tr class="even">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0455</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0001</td>
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2240</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.6472</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">4</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.1680</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.8153</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">5</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.1008</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9161</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">6</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0504</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9665</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">7</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0216</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9881</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">8</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0081</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9962</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">9</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0027</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9989</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">10</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0008</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9997</td>
 </tr>
 </tbody>
 </table>
@@ -3502,19 +3565,19 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
-<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
-<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#02b8fa"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb139-6"><a href="#cb139-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de probabilidad hipergeométrica"</span>,</span>
-<span id="cb139-7"><a href="#cb139-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Frascos defectuosos detectados)"</span>,</span>
-<span id="cb139-8"><a href="#cb139-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
+<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#02b8fa"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de probabilidad hipergeométrica"</span>,</span>
+<span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Frascos defectuosos detectados)"</span>,</span>
+<span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-89-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-90-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -3524,19 +3587,19 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>df_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
-<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
-<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución hipergeométrica"</span>,</span>
-<span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x"</span>,</span>
-<span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>df_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
+<span id="cb141-4"><a href="#cb141-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb141-5"><a href="#cb141-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb141-6"><a href="#cb141-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución hipergeométrica"</span>,</span>
+<span id="cb141-7"><a href="#cb141-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x"</span>,</span>
+<span id="cb141-8"><a href="#cb141-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-90-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-91-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -3558,10 +3621,10 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de P(X &gt;= 1) usando el complemento: 1 - P(X = 0)</span></span>
-<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>prob_res <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">dhyper</span>(<span class="dv">0</span>, <span class="at">m =</span> <span class="dv">3</span>, <span class="at">n =</span> <span class="dv">9</span>, <span class="at">k =</span> <span class="dv">5</span>), <span class="dv">4</span>)</span>
-<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb141-4"><a href="#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_res)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de P(X &gt;= 1) usando el complemento: 1 - P(X = 0)</span></span>
+<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a>prob_res <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">dhyper</span>(<span class="dv">0</span>, <span class="at">m =</span> <span class="dv">3</span>, <span class="at">n =</span> <span class="dv">9</span>, <span class="at">k =</span> <span class="dv">5</span>), <span class="dv">4</span>)</span>
+<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_res)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>La probabilidad calculada es: 0.8409</code></pre>
@@ -3573,17 +3636,17 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>rango <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>K</span>
-<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> rango, <span class="at">y =</span> <span class="fu">dhyper</span>(rango, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n))</span>
-<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">&gt;=</span><span class="dv">1</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
-<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Cuantía"</span>) <span class="sc">+</span></span>
-<span id="cb143-5"><a href="#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">"Distribución Hipergeométrica - Al menos 1 defectuoso"</span>) <span class="sc">+</span></span>
-<span id="cb143-6"><a href="#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>rango <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>K</span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> rango, <span class="at">y =</span> <span class="fu">dhyper</span>(rango, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n))</span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">&gt;=</span><span class="dv">1</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
+<span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Cuantía"</span>) <span class="sc">+</span></span>
+<span id="cb144-5"><a href="#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">"Distribución Hipergeométrica - Al menos 1 defectuoso"</span>) <span class="sc">+</span></span>
+<span id="cb144-6"><a href="#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-92-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-93-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
