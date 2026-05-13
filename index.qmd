@@ -1,5 +1,5 @@
 ---
-title: "MODELOS DISCRETOS DE PROBABILIDAD 1"  # Título principal del documento
+title: "MODELOS DISCRETOS DE PROBABILIDAD"  # Título principal del documento
 subtitle: "TIPOS DE DISTRIBUCIÓN DISCRETA DE PROBABILIDAD"  # Subtítulo del documento
 date: today  # Fecha actual en formato español
 author:  # Información sobre los autores
@@ -1706,7 +1706,7 @@ Form.Basic <- c("striped", "bordered", "hover", "condensed", "responsive")
 kable(df, align = "c") %>% 
   kable_styling("striped", full_width = F) %>%
   column_spec(1, bold = T) %>%
-  row_spec(0:5, bold = T, color = "#f7f2f2", background = "#5c61cc")
+  row_spec(0:6, bold = T, color = "#f7f2f2", background = "#5c61cc")
 ```
 
 ## Distribución de Probabilidad
