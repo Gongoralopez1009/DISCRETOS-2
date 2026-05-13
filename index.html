@@ -190,13 +190,13 @@ window.Quarto = {
   <li><a href="#ejercicio-8" id="toc-ejercicio-8" class="nav-link" data-scroll-target="#ejercicio-8"><span class="header-section-number">3.3</span> .Ejercicio 8</a></li>
   <li><a href="#ejercicio-9" id="toc-ejercicio-9" class="nav-link" data-scroll-target="#ejercicio-9"><span class="header-section-number">3.4</span> .Ejercicio 9</a></li>
   <li><a href="#ejercicio-10" id="toc-ejercicio-10" class="nav-link" data-scroll-target="#ejercicio-10"><span class="header-section-number">3.5</span> .Ejercicio 10</a></li>
+  <li><a href="#ejercicio-14" id="toc-ejercicio-14" class="nav-link" data-scroll-target="#ejercicio-14"><span class="header-section-number">3.6</span> .Ejercicio 14</a></li>
   </ul></li>
   <li><a href="#modelo-hipergeométrico" id="toc-modelo-hipergeométrico" class="nav-link" data-scroll-target="#modelo-hipergeométrico"><span class="header-section-number">4</span> .Modelo Hipergeométrico</a>
   <ul class="collapse">
   <li><a href="#ejercicio-11" id="toc-ejercicio-11" class="nav-link" data-scroll-target="#ejercicio-11"><span class="header-section-number">4.1</span> .Ejercicio 11</a></li>
   <li><a href="#ejercicio-12" id="toc-ejercicio-12" class="nav-link" data-scroll-target="#ejercicio-12"><span class="header-section-number">4.2</span> .Ejercicio 12</a></li>
   <li><a href="#ejercicio-13" id="toc-ejercicio-13" class="nav-link" data-scroll-target="#ejercicio-13"><span class="header-section-number">4.3</span> .Ejercicio 13</a></li>
-  <li><a href="#ejercicio-14" id="toc-ejercicio-14" class="nav-link" data-scroll-target="#ejercicio-14"><span class="header-section-number">4.4</span> .Ejercicio 14</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2875,110 +2875,13 @@ window.Quarto = {
 </div>
 </div>
 </section>
-</section>
-<section id="modelo-hipergeométrico" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> .Modelo Hipergeométrico</h1>
-<p><span class="math display">  \\
-\text{Función de probabilidad: } P(X = x) = \frac{\binom{k}{x} \binom{N-k}{n-x}}{\binom{N}{n}} \\
-\text{Media: } \mu = n \left( \frac{k}{N} \right) \\
-\text{Varianza: } \sigma^2 = n \left( \frac{k}{N} \right) \left( \frac{N-k}{N} \right) \left( \frac{N-n}{N-1} \right) \\
-\text{Desviación estándar: } \sigma = \sqrt{n \left( \frac{k}{N} \right) \left( \frac{N-k}{N} \right) \left( \frac{N-n}{N-1} \right)}</span></p>
-<p><span class="math inline">N</span> (N mayúscula): Es el Tamaño de la población. Representa el número total de elementos o individuos que existen en el conjunto completo antes de extraer la muestra.</p>
-<p><span class="math inline">k</span> (o a veces <span class="math inline">K</span>): Es el Número de éxitos en la población. Representa cuántos elementos dentro de la población total poseen la característica que estamos estudiando (ej. piezas defectuosas totales, empleados con título, etc.).</p>
-<p><span class="math inline">n</span> (n minúscula): Es el Tamaño de la muestra. Representa la cantidad de elementos que extraemos de la población total para ser observados.</p>
-<p><span class="math inline">x</span> (o <span class="math inline">k</span> minúscula en algunos textos): Es el Número de éxitos en la muestra. Representa cuántos de los elementos que sacamos en nuestra muestra de tamaño <span class="math inline">n</span> poseen la característica deseada.</p>
-<p>La Distribución Hipergeométrica es una distribución de probabilidad discreta que se utiliza para calcular la probabilidad de obtener un número determinado de éxitos en una muestra, sin reemplazo, extraída de una población finita.</p>
-<p><strong>Características:</strong></p>
-<ul>
-<li><p>La población es finita (N).</p></li>
-<li><p>La probabilidad de éxito cambia en cada selección porque no se devuelve el elemento extraído.</p></li>
-<li><p>Se conoce el número total de éxitos en la población (k).</p></li>
-</ul>
-<p><strong>Ejemplo 3: Modelo Hipergeométrico</strong></p>
-<p>Contexto:Selección de Comisiones en un Concejo Municipal.</p>
-<p>Situación: Un Concejo Municipal tiene 15 regidores (N = 15). De ellos, 9 son de oposición (k = 9) y 6 son del oficialismo. Se debe formar una comisión de 5 miembros (n = 5) al azar.</p>
-<p>Pregunta: ¿Cuál es la probabilidad de que exactamente 3 de los elegidos sean de la oposición (x = 3)?</p>
-<p>Datos: N (Población total) = 15 , k (Éxitos en la población) = 9, n (Muestra seleccionada) = 5.</p>
-<p>Cálculos:</p>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Parametro =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"k"</span>, <span class="st">"n"</span>, <span class="st">"x"</span>),</span>
-<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Valor =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">3</span>),</span>
-<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Descripcion =</span> <span class="fu">c</span>(</span>
-<span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Total de regidores en el concejo"</span>,</span>
-<span id="cb119-8"><a href="#cb119-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Total de regidores que son de oposición"</span>,</span>
-<span id="cb119-9"><a href="#cb119-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Tamaño de la comisión a formar"</span>,</span>
-<span id="cb119-10"><a href="#cb119-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Número de opositores que queremos en la comisión"</span></span>
-<span id="cb119-11"><a href="#cb119-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb119-12"><a href="#cb119-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb119-13"><a href="#cb119-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-14"><a href="#cb119-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tabla, <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">caption =</span> <span class="st">"Parámetros del modelo hipergeométrico"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb119-15"><a href="#cb119-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
-<span id="cb119-16"><a href="#cb119-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"bordered"</span>),</span>
-<span id="cb119-17"><a href="#cb119-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb119-18"><a href="#cb119-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"center"</span></span>
-<span id="cb119-19"><a href="#cb119-19" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-bordered caption-top table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Parámetros del modelo hipergeométrico</caption>
-<thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Parametro</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Valor</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Descripcion</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">N</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">Total de regidores en el concejo</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">k</td>
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">Total de regidores que son de oposición</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">n</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">Tamaño de la comisión a formar</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">x</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">Número de opositores que queremos en la comisión</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Función de Probabilidad Aplicada: <em>Fórmula: P(x) = [ (kCx) * (N-k C n-x) ] / (NCn)</em></p>
-<ol type="1">
-<li><p>Combinaciones de éxito (9C3): 84</p></li>
-<li><p>Combinaciones de fracaso (6C2): 15</p></li>
-<li><p>Combinaciones totales (15C5): 3,003</p></li>
-</ol>
-<p>P(3) = ( 84 * 15 ) / 3,003 P(3) = 1,260 / 3,003 P(3) = 0.4195 (41.95%)</p>
-<p><strong>Estadísticos del Modelo:</strong></p>
-<p>Media (u): n * (k / N) = 5 * (9 / 15) = 3.0 miembros</p>
-<p>Varianza (v):n * (k/N) * ((N-k)/N) * ((N-n)/(N-1)) = 0.857</p>
-<p>Desviación Estándar (s): √0.857 = 0.925</p>
-<p>Media (u) = n * (k / N) = 5 * (9 / 15) = 3 miembros de oposición esperados.</p>
-<p>Varianza (v) = 5 * (9/15) * (6/15) * [(15-5) / (15-1)] = 3 * 0.4 * (10/14) = 0.857.</p>
-<p>Desviación Estándar (s) = raíz(0.857) = 0.925.</p>
-<section id="ejercicio-11" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="ejercicio-11"><span class="header-section-number">4.1</span> .Ejercicio 11</h2>
-<p>Un jefe de almacén sabe que 6 de las 25 bicicletas que tiene para la venta presentan fallas en los frenos. Si el vendedor vendió en el día 4 bicicletas, ¿cuál es la probabilidad de que vendiera dos de las que requerían ajuste?</p>
-<p><span class="math inline">N = 25</span> (Población total de bicicletas).</p>
-<p><span class="math inline">K = 6</span> (Número de éxitos en la población: bicicletas con fallas).</p>
-<p><span class="math inline">n = 4</span> (Tamaño de la muestra: bicicletas vendidas).</p>
-<p><span class="math inline">x</span> = Número de bicicletas con fallas en la muestra.</p>
+<section id="ejercicio-14" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="ejercicio-14"><span class="header-section-number">3.6</span> .Ejercicio 14</h2>
+<p>En promedio una casa de cada 2000 en cierta zona de Barranquilla se incendia durante el año, si hay 6000 casas en dicha zona ¿Cuál es la probabilidad de que más de 3 casas se incendien durante el año?</p>
+<p><span class="math inline">n=6000</span> (Número total de casas).</p>
+<p><span class="math inline">p=1/2000</span> (Probabilidad de incendio por casa).<span class="math inline">λ</span> (Media): <span class="math inline">n×p=6000×(1/2000)=3.</span></p>
+<p>En promedio, se incendian 3 casas al año.</p>
+<p>Objetivo: Probabilidad de que se incendien más de 3 casas <span class="math inline">(P(X&gt;3)).</span></p>
 <p><strong>Solución</strong></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-38-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-38-1" role="tab" aria-controls="tabset-38-1" aria-selected="true" href="">Tabla</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-38-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-38-2" role="tab" aria-controls="tabset-38-2" aria-selected="false" href="">Distribución de Probabilidad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-38-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-38-3" role="tab" aria-controls="tabset-38-3" aria-selected="false" href="">Función de Distribución</a></li></ul>
@@ -2987,509 +2890,16 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">25</span></span>
-<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
-<span id="cb120-5"><a href="#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dhyper(x, m, n_rest, k) -&gt; m=éxitos, n_rest=fracasos, k=muestra</span></span>
-<span id="cb120-6"><a href="#cb120-6" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(x, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
-<span id="cb120-7"><a href="#cb120-7" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fx), <span class="dv">4</span>)</span>
-<span id="cb120-8"><a href="#cb120-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
-<span id="cb120-9"><a href="#cb120-9" aria-hidden="true" tabindex="-1"></a>Form.Basic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"bordered"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>)</span>
-<span id="cb120-10"><a href="#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb120-11"><a href="#cb120-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
-<span id="cb120-12"><a href="#cb120-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb120-13"><a href="#cb120-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">x</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">fx</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">Fx</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.3064</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.3064</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.4596</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.7660</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2028</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9688</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0300</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9988</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">4</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0012</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="tabset-38-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-38-2-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
-<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
-<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#02b8fa"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de probabilidad hipergeométrica"</span>,</span>
-<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Bicicletas defectuosas vendidas)"</span>,</span>
-<span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-38-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-38-3-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>df_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
-<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución hipergeométrica"</span>,</span>
-<span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x"</span>,</span>
-<span id="cb122-8"><a href="#cb122-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-75-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p><strong>Solución Inciso</strong></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-40-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-40-1" role="tab" aria-controls="tabset-40-1" aria-selected="true" href="">Inciso Único</a></li></ul>
-<div class="tab-content">
-<div id="tabset-40-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-40-1-tab">
-<p>¿Cuál es la probabilidad de que el vendedor vendiera exactamente dos de las que requerían ajuste? (Esto significa <span class="math inline">P(X = 2)</span>).</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-39-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-39-1" role="tab" aria-controls="tabset-39-1" aria-selected="true" href="">Respuesta</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-39-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-39-2" role="tab" aria-controls="tabset-39-2" aria-selected="false" href="">Gráfica</a></li></ul>
-<div class="tab-content">
-<div id="tabset-39-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-39-1-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo exacto para x = 2</span></span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>prob_exacta <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(<span class="dv">2</span>, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_exacta)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>La probabilidad calculada es: 0.2028</code></pre>
-</div>
-</div>
-<p>La probabilidad de que se vendieran exactamente dos bicicletas con fallas es del 20.28%.</p>
-</div>
-<div id="tabset-39-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-39-2-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>rango <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>n</span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> rango, <span class="at">y =</span> <span class="fu">dhyper</span>(rango, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n))</span>
-<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">==</span><span class="dv">2</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
-<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.35</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Cuantía"</span>) <span class="sc">+</span></span>
-<span id="cb125-5"><a href="#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">"Distribución Hipergeométrica - Exactamente 2"</span>) <span class="sc">+</span></span>
-<span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-77-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>La gráfica de cuantía muestra que, dado que solo hay 6 bicicletas con fallas de un total de 25, lo más probable es que el vendedor haya entregado 0 o 1 bicicleta defectuosa. Sin embargo, la probabilidad de vender exactamente 2 es significativa (20.28%), representada por la barra resaltada. A medida que el número de éxitos en la muestra (<span class="math inline">x</span>) aumenta hacia 3 o 4, la probabilidad disminuye drásticamente debido a la escasez de bicicletas dañadas en la población total.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="ejercicio-12" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="ejercicio-12"><span class="header-section-number">4.2</span> .Ejercicio 12</h2>
-<p>De un lote de 20 componentes electrónicos, donde se sabe que 5 son defectuosos, se seleccionan 4 al azar para una prueba. ¿Cuál es la probabilidad de que exactamente 2 de los seleccionados sean defectuosos?</p>
-<p>Población (<span class="math inline">N</span>): 20 componentes.</p>
-<p>Éxitos en población (<span class="math inline">K</span>): 5 defectuosos.</p>
-<p>Muestra (<span class="math inline">n</span>): 4 componentes.</p>
-<p>Objetivo: Probabilidad de exactamente 2 defectuosos</p>
-<p><strong>Solución</strong></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-42-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-42-1" role="tab" aria-controls="tabset-42-1" aria-selected="true" href="">Tabla</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-42-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-42-2" role="tab" aria-controls="tabset-42-2" aria-selected="false" href="">Distribución de Probabilidad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-42-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-42-3" role="tab" aria-controls="tabset-42-3" aria-selected="false" href="">Función de Distribución</a></li></ul>
-<div class="tab-content">
-<div id="tabset-42-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-42-1-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>n_muestra <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>K</span>
-<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(x, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n_muestra), <span class="dv">4</span>)</span>
-<span id="cb126-6"><a href="#cb126-6" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fx), <span class="dv">4</span>)</span>
-<span id="cb126-7"><a href="#cb126-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
-<span id="cb126-8"><a href="#cb126-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb126-9"><a href="#cb126-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
-<span id="cb126-10"><a href="#cb126-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">x</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">fx</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">Fx</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2817</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2817</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.4696</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.7513</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2167</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9680</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0310</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9990</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">4</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0010</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">5</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="tabset-42-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-42-2-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
-<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#02b8fa"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Probabilidad Hipergeométrica (N=20, K=5, n=4)"</span>, <span class="at">x =</span> <span class="st">"x (Defectuosos)"</span>, <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-79-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-42-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-42-3-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando los datos de la tabla anterior (df)</span></span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>df_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
-<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
-<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución hipergeométrica (Lote 20)"</span>,</span>
-<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Componentes defectuosos)"</span>,</span>
-<span id="cb128-9"><a href="#cb128-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>) <span class="sc">+</span></span>
-<span id="cb128-10"><a href="#cb128-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-80-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Solución Inciso</strong></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-41-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-41-1" role="tab" aria-controls="tabset-41-1" aria-selected="true" href="">Respuesta</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-41-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-41-2" role="tab" aria-controls="tabset-41-2" aria-selected="false" href="">Gráfica</a></li></ul>
-<div class="tab-content">
-<div id="tabset-41-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-41-1-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>prob_a <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(<span class="dv">2</span>, <span class="at">m =</span> <span class="dv">5</span>, <span class="at">n =</span> <span class="dv">15</span>, <span class="at">k =</span> <span class="dv">4</span>), <span class="dv">4</span>)</span>
-<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_a)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>La probabilidad calculada es: 0.2167</code></pre>
-</div>
-</div>
-<p>La probabilidad de que exactamente 2 componentes sean defectuosos es del 21.67%.</p>
-</div>
-<div id="tabset-41-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-41-2-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">==</span><span class="dv">2</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
-<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span> </span>
-<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-82-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>La gráfica de cuantía para este lote muestra que el escenario más probable es encontrar 1 componente defectuoso (con un 44.8%). La barra resaltada en el valor <span class="math inline">x=2</span> representa una probabilidad moderada del 21.67%.</p>
-<p>Visualmente, se observa que la probabilidad decae rápidamente para valores superiores a 2, lo que indica que, dada la proporción de fallas en el lote total (<span class="math inline">25\%</span>), es poco probable que la muestra de 4 contenga más de la mitad de componentes dañados.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="ejercicio-13" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="ejercicio-13"><span class="header-section-number">4.3</span> .Ejercicio 13</h2>
-<p>En un grupo de 15 empleados, 10 son hombres y 5 son mujeres. Si se eligen 3 empleados al azar para un comité, ¿cuál es la probabilidad de que el comité esté formado por exactamente 2 mujeres?</p>
-<p>Población (<span class="math inline">N</span>): 15 empleados.</p>
-<p>Éxitos en población (<span class="math inline">K</span>): 5 mujeres.</p>
-<p>Muestra (<span class="math inline">n</span>): 3 empleados.</p>
-<p>Objetivo: Probabilidad de exactamente 2 mujeres.</p>
-<p><strong>Solución</strong></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-44-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-44-1" role="tab" aria-controls="tabset-44-1" aria-selected="true" href="">Tabla</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-44-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-44-2" role="tab" aria-controls="tabset-44-2" aria-selected="false" href="">Distribución de Probabilidad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-44-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-44-3" role="tab" aria-controls="tabset-44-3" aria-selected="false" href="">Función de Distribución</a></li></ul>
-<div class="tab-content">
-<div id="tabset-44-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-44-1-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>K</span>
-<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dhyper(x, m, n_rest, k) -&gt; m=éxitos (buen estado), n_rest=fracasos, k=muestra</span></span>
-<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(x, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
-<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fx), <span class="dv">4</span>)</span>
-<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
-<span id="cb132-9"><a href="#cb132-9" aria-hidden="true" tabindex="-1"></a>Form.Basic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"bordered"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>)</span>
-<span id="cb132-10"><a href="#cb132-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb132-11"><a href="#cb132-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
-<span id="cb132-12"><a href="#cb132-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb132-13"><a href="#cb132-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">x</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">fx</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">Fx</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0238</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0238</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2381</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2619</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.4762</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.7381</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">4</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2381</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9762</td>
-</tr>
-<tr class="even">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">5</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0238</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">6</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
-<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="tabset-44-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-44-2-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>df_c1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
-<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_c1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
-<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#02b8fa"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Comité de Empleados (Mujeres)"</span>, <span class="at">x =</span> <span class="st">"x (Mujeres)"</span>, <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-84-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-44-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-44-3-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando los datos de la tabla df_comite</span></span>
-<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>df_c2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
-<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_c2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
-<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb134-6"><a href="#cb134-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb134-7"><a href="#cb134-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución acumulada (Comité)"</span>,</span>
-<span id="cb134-8"><a href="#cb134-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Mujeres seleccionadas)"</span>,</span>
-<span id="cb134-9"><a href="#cb134-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>) <span class="sc">+</span></span>
-<span id="cb134-10"><a href="#cb134-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-85-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Solución Inciso</strong></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-43-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-43-1" role="tab" aria-controls="tabset-43-1" aria-selected="true" href="">Respuesta</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-43-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-43-2" role="tab" aria-controls="tabset-43-2" aria-selected="false" href="">Gráfica</a></li></ul>
-<div class="tab-content">
-<div id="tabset-43-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-43-1-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>prob_b <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(<span class="dv">2</span>, <span class="at">m =</span> <span class="dv">5</span>, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">k =</span> <span class="dv">3</span>), <span class="dv">4</span>)</span>
-<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_b)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>La probabilidad calculada es: 0.2198</code></pre>
-</div>
-</div>
-<p>La probabilidad de elegir exactamente 2 mujeres para el comité es del 21.98%.</p>
-</div>
-<div id="tabset-43-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-43-2-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">dhyper</span>(x, <span class="at">m =</span> <span class="dv">5</span>, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a>df_comite <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, fx)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_comite, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx, <span class="at">fill =</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">2</span>, <span class="st">"Valor"</span>, <span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#fab27a"</span>, <span class="st">"#5c61cc"</span>)) <span class="sc">+</span></span>
-<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-88-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>En esta distribución, observamos que las barras más altas corresponden a <span class="math inline">x=1</span> y <span class="math inline">x=0</span>. Al elegir solo a 3 personas de un grupo donde las mujeres son minoría (<span class="math inline">1/3</span> del total), la gráfica nos muestra que lo más esperado es que el comité tenga 1 mujer o ninguna. La probabilidad de tener exactamente 2 mujeres (21.98%) se muestra como una barra de altura media, indicando que, aunque no es el resultado más probable, es una posibilidad real en el muestreo aleatorio.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="ejercicio-14" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="ejercicio-14"><span class="header-section-number">4.4</span> .Ejercicio 14</h2>
-<p>Un inspector de calidad examina una muestra de 5 frascos de un lote de 12, de los cuales 3 tienen sellos defectuosos. ¿Cuál es la probabilidad de que al menos uno tenga sello defectuoso?</p>
-<p>Población (<span class="math inline">N</span>): 12 frascos.</p>
-<p>Éxitos en población (<span class="math inline">K</span>): 3 sellos defectuosos.</p>
-<p>Muestra (<span class="math inline">n</span>): 5 frascos.</p>
-<p>Objetivo: Probabilidad de al menos uno defectuoso (<span class="math inline">x \ge 1</span>).</p>
-<p><strong>Solución</strong></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-45-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-45-1" role="tab" aria-controls="tabset-45-1" aria-selected="true" href="">Tabla</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-45-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-45-2" role="tab" aria-controls="tabset-45-2" aria-selected="false" href="">Distribución de Probabilidad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-45-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-45-3" role="tab" aria-controls="tabset-45-3" aria-selected="false" href="">Función de Distribución</a></li></ul>
-<div class="tab-content">
-<div id="tabset-45-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-45-1-tab">
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># Tomamos hasta 10 para visualizar la tendencia</span></span>
-<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dpois</span>(x, lambda), <span class="dv">4</span>)</span>
-<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">ppois</span>(x, lambda), <span class="dv">4</span>)</span>
-<span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
-<span id="cb139-6"><a href="#cb139-6" aria-hidden="true" tabindex="-1"></a>Form.Basic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"bordered"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>)</span>
-<span id="cb139-7"><a href="#cb139-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb139-8"><a href="#cb139-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
-<span id="cb139-9"><a href="#cb139-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb139-10"><a href="#cb139-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># Tomamos hasta 10 para visualizar la tendencia</span></span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dpois</span>(x, lambda), <span class="dv">4</span>)</span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">ppois</span>(x, lambda), <span class="dv">4</span>)</span>
+<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
+<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a>Form.Basic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"bordered"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>)</span>
+<span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb119-8"><a href="#cb119-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb119-9"><a href="#cb119-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb119-10"><a href="#cb119-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
@@ -3561,45 +2971,45 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="tabset-45-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-45-2-tab">
+<div id="tabset-38-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-38-2-tab">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
-<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
-<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#02b8fa"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de probabilidad hipergeométrica"</span>,</span>
-<span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Frascos defectuosos detectados)"</span>,</span>
-<span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
+<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb120-5"><a href="#cb120-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb120-6"><a href="#cb120-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de probabilidad de Poisson (lambda = 3)"</span>,</span>
+<span id="cb120-7"><a href="#cb120-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Número de casas incendiadas)"</span>,</span>
+<span id="cb120-8"><a href="#cb120-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-90-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-73-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-45-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-45-3-tab">
+<div id="tabset-38-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-38-3-tab">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>df_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
-<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
-<span id="cb141-4"><a href="#cb141-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb141-5"><a href="#cb141-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb141-6"><a href="#cb141-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución hipergeométrica"</span>,</span>
-<span id="cb141-7"><a href="#cb141-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x"</span>,</span>
-<span id="cb141-8"><a href="#cb141-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>df_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución"</span>,</span>
+<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x"</span>,</span>
+<span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-91-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -3609,49 +3019,644 @@ window.Quarto = {
 </div>
 <p><strong>Solución Incisos</strong></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-47-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-47-1" role="tab" aria-controls="tabset-47-1" aria-selected="true" href="">Inciso Único</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-40-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-40-1" role="tab" aria-controls="tabset-40-1" aria-selected="true" href="">Inciso Único</a></li></ul>
+<div class="tab-content">
+<div id="tabset-40-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-40-1-tab">
+<p>¿Cuál es la probabilidad de que más de 3 casas se incendien?</p>
+<p>Esto significa <span class="math inline">P(X&gt;3)</span>, que es igual a <span class="math inline">1−P(X≤3)</span>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-39-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-39-1" role="tab" aria-controls="tabset-39-1" aria-selected="true" href="">Respuesta</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-39-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-39-2" role="tab" aria-controls="tabset-39-2" aria-selected="false" href="">Gráfica</a></li></ul>
+<div class="tab-content">
+<div id="tabset-39-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-39-1-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de 1 - P(X &lt;= 3)</span></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>prob_mas_de_tres <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">3</span>, lambda), <span class="dv">4</span>)</span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_mas_de_tres)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>La probabilidad calculada es: 0.3528</code></pre>
+</div>
+</div>
+<p>La probabilidad de que se incendien más de 3 casas durante el año es del 35.28%.</p>
+</div>
+<div id="tabset-39-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-39-2-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>rango <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> rango, <span class="at">y =</span> <span class="fu">dpois</span>(rango, lambda))</span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">&gt;</span><span class="dv">3</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.35</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Casas"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Probabilidad"</span>) <span class="sc">+</span></span>
+<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">"Distribución de Poisson - Más de 3 incendios"</span>) <span class="sc">+</span></span>
+<span id="cb124-6"><a href="#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-76-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La gráfica de cuantía muestra que, dado que el promedio <span class="math inline">(λ)</span> es 3, los valores con mayor probabilidad están concentrados en 2 y 3. Sin embargo, al pedir “más de 3”, estamos sumando la “cola larga” de la derecha (barras resaltadas en color oscuro).Aunque la probabilidad individual de que se incendien, por ejemplo, 7 u 8 casas es muy baja, la suma de todas las posibilidades superiores a 3 representa un 35.28%, lo que indica que no es un evento tan improbable como podría parecer a simple vista.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modelo-hipergeométrico" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> .Modelo Hipergeométrico</h1>
+<p><span class="math display">  \\
+\text{Función de probabilidad: } P(X = x) = \frac{\binom{k}{x} \binom{N-k}{n-x}}{\binom{N}{n}} \\
+\text{Media: } \mu = n \left( \frac{k}{N} \right) \\
+\text{Varianza: } \sigma^2 = n \left( \frac{k}{N} \right) \left( \frac{N-k}{N} \right) \left( \frac{N-n}{N-1} \right) \\
+\text{Desviación estándar: } \sigma = \sqrt{n \left( \frac{k}{N} \right) \left( \frac{N-k}{N} \right) \left( \frac{N-n}{N-1} \right)}</span></p>
+<p><span class="math inline">N</span> (N mayúscula): Es el Tamaño de la población. Representa el número total de elementos o individuos que existen en el conjunto completo antes de extraer la muestra.</p>
+<p><span class="math inline">k</span> (o a veces <span class="math inline">K</span>): Es el Número de éxitos en la población. Representa cuántos elementos dentro de la población total poseen la característica que estamos estudiando (ej. piezas defectuosas totales, empleados con título, etc.).</p>
+<p><span class="math inline">n</span> (n minúscula): Es el Tamaño de la muestra. Representa la cantidad de elementos que extraemos de la población total para ser observados.</p>
+<p><span class="math inline">x</span> (o <span class="math inline">k</span> minúscula en algunos textos): Es el Número de éxitos en la muestra. Representa cuántos de los elementos que sacamos en nuestra muestra de tamaño <span class="math inline">n</span> poseen la característica deseada.</p>
+<p>La Distribución Hipergeométrica es una distribución de probabilidad discreta que se utiliza para calcular la probabilidad de obtener un número determinado de éxitos en una muestra, sin reemplazo, extraída de una población finita.</p>
+<p><strong>Características:</strong></p>
+<ul>
+<li><p>La población es finita (N).</p></li>
+<li><p>La probabilidad de éxito cambia en cada selección porque no se devuelve el elemento extraído.</p></li>
+<li><p>Se conoce el número total de éxitos en la población (k).</p></li>
+</ul>
+<p><strong>Ejemplo 3: Modelo Hipergeométrico</strong></p>
+<p>Contexto:Selección de Comisiones en un Concejo Municipal.</p>
+<p>Situación: Un Concejo Municipal tiene 15 regidores (N = 15). De ellos, 9 son de oposición (k = 9) y 6 son del oficialismo. Se debe formar una comisión de 5 miembros (n = 5) al azar.</p>
+<p>Pregunta: ¿Cuál es la probabilidad de que exactamente 3 de los elegidos sean de la oposición (x = 3)?</p>
+<p>Datos: N (Población total) = 15 , k (Éxitos en la población) = 9, n (Muestra seleccionada) = 5.</p>
+<p>Cálculos:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Parametro =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"k"</span>, <span class="st">"n"</span>, <span class="st">"x"</span>),</span>
+<span id="cb125-5"><a href="#cb125-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Valor =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">3</span>),</span>
+<span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Descripcion =</span> <span class="fu">c</span>(</span>
+<span id="cb125-7"><a href="#cb125-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Total de regidores en el concejo"</span>,</span>
+<span id="cb125-8"><a href="#cb125-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Total de regidores que son de oposición"</span>,</span>
+<span id="cb125-9"><a href="#cb125-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Tamaño de la comisión a formar"</span>,</span>
+<span id="cb125-10"><a href="#cb125-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Número de opositores que queremos en la comisión"</span></span>
+<span id="cb125-11"><a href="#cb125-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb125-12"><a href="#cb125-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb125-13"><a href="#cb125-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-14"><a href="#cb125-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tabla, <span class="at">align =</span> <span class="st">"c"</span>, <span class="at">caption =</span> <span class="st">"Parámetros del modelo hipergeométrico"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb125-15"><a href="#cb125-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
+<span id="cb125-16"><a href="#cb125-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"bordered"</span>),</span>
+<span id="cb125-17"><a href="#cb125-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb125-18"><a href="#cb125-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"center"</span></span>
+<span id="cb125-19"><a href="#cb125-19" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-bordered caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Parámetros del modelo hipergeométrico</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Parametro</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Valor</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">Total de regidores en el concejo</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">k</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">Total de regidores que son de oposición</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">n</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Tamaño de la comisión a formar</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Número de opositores que queremos en la comisión</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Función de Probabilidad Aplicada: <em>Fórmula: P(x) = [ (kCx) * (N-k C n-x) ] / (NCn)</em></p>
+<ol type="1">
+<li><p>Combinaciones de éxito (9C3): 84</p></li>
+<li><p>Combinaciones de fracaso (6C2): 15</p></li>
+<li><p>Combinaciones totales (15C5): 3,003</p></li>
+</ol>
+<p>P(3) = ( 84 * 15 ) / 3,003 P(3) = 1,260 / 3,003 P(3) = 0.4195 (41.95%)</p>
+<p><strong>Estadísticos del Modelo:</strong></p>
+<p>Media (u): n * (k / N) = 5 * (9 / 15) = 3.0 miembros</p>
+<p>Varianza (v):n * (k/N) * ((N-k)/N) * ((N-n)/(N-1)) = 0.857</p>
+<p>Desviación Estándar (s): √0.857 = 0.925</p>
+<p>Media (u) = n * (k / N) = 5 * (9 / 15) = 3 miembros de oposición esperados.</p>
+<p>Varianza (v) = 5 * (9/15) * (6/15) * [(15-5) / (15-1)] = 3 * 0.4 * (10/14) = 0.857.</p>
+<p>Desviación Estándar (s) = raíz(0.857) = 0.925.</p>
+<section id="ejercicio-11" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="ejercicio-11"><span class="header-section-number">4.1</span> .Ejercicio 11</h2>
+<p>Un jefe de almacén sabe que 6 de las 25 bicicletas que tiene para la venta presentan fallas en los frenos. Si el vendedor vendió en el día 4 bicicletas, ¿cuál es la probabilidad de que vendiera dos de las que requerían ajuste?</p>
+<p><span class="math inline">N = 25</span> (Población total de bicicletas).</p>
+<p><span class="math inline">K = 6</span> (Número de éxitos en la población: bicicletas con fallas).</p>
+<p><span class="math inline">n = 4</span> (Tamaño de la muestra: bicicletas vendidas).</p>
+<p><span class="math inline">x</span> = Número de bicicletas con fallas en la muestra.</p>
+<p><strong>Solución</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-41-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-41-1" role="tab" aria-controls="tabset-41-1" aria-selected="true" href="">Tabla</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-41-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-41-2" role="tab" aria-controls="tabset-41-2" aria-selected="false" href="">Distribución de Probabilidad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-41-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-41-3" role="tab" aria-controls="tabset-41-3" aria-selected="false" href="">Función de Distribución</a></li></ul>
+<div class="tab-content">
+<div id="tabset-41-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-41-1-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
+<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dhyper(x, m, n_rest, k) -&gt; m=éxitos, n_rest=fracasos, k=muestra</span></span>
+<span id="cb126-6"><a href="#cb126-6" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(x, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
+<span id="cb126-7"><a href="#cb126-7" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fx), <span class="dv">4</span>)</span>
+<span id="cb126-8"><a href="#cb126-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
+<span id="cb126-9"><a href="#cb126-9" aria-hidden="true" tabindex="-1"></a>Form.Basic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"bordered"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>)</span>
+<span id="cb126-10"><a href="#cb126-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb126-11"><a href="#cb126-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb126-12"><a href="#cb126-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb126-13"><a href="#cb126-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">x</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">fx</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">Fx</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.3064</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.3064</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.4596</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.7660</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2028</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9688</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0300</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9988</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">4</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0012</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-41-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-41-2-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#02b8fa"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de probabilidad hipergeométrica"</span>,</span>
+<span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Bicicletas defectuosas vendidas)"</span>,</span>
+<span id="cb127-8"><a href="#cb127-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-79-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-41-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-41-3-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>df_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución hipergeométrica"</span>,</span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x"</span>,</span>
+<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-80-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Solución Inciso</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-43-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-43-1" role="tab" aria-controls="tabset-43-1" aria-selected="true" href="">Inciso Único</a></li></ul>
+<div class="tab-content">
+<div id="tabset-43-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-43-1-tab">
+<p>¿Cuál es la probabilidad de que el vendedor vendiera exactamente dos de las que requerían ajuste? (Esto significa <span class="math inline">P(X = 2)</span>).</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-42-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-42-1" role="tab" aria-controls="tabset-42-1" aria-selected="true" href="">Respuesta</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-42-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-42-2" role="tab" aria-controls="tabset-42-2" aria-selected="false" href="">Gráfica</a></li></ul>
+<div class="tab-content">
+<div id="tabset-42-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-42-1-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo exacto para x = 2</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>prob_exacta <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(<span class="dv">2</span>, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_exacta)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>La probabilidad calculada es: 0.2028</code></pre>
+</div>
+</div>
+<p>La probabilidad de que se vendieran exactamente dos bicicletas con fallas es del 20.28%.</p>
+</div>
+<div id="tabset-42-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-42-2-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>rango <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>n</span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> rango, <span class="at">y =</span> <span class="fu">dhyper</span>(rango, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n))</span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">==</span><span class="dv">2</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.35</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Cuantía"</span>) <span class="sc">+</span></span>
+<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">"Distribución Hipergeométrica - Exactamente 2"</span>) <span class="sc">+</span></span>
+<span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-82-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La gráfica de cuantía muestra que, dado que solo hay 6 bicicletas con fallas de un total de 25, lo más probable es que el vendedor haya entregado 0 o 1 bicicleta defectuosa. Sin embargo, la probabilidad de vender exactamente 2 es significativa (20.28%), representada por la barra resaltada. A medida que el número de éxitos en la muestra (<span class="math inline">x</span>) aumenta hacia 3 o 4, la probabilidad disminuye drásticamente debido a la escasez de bicicletas dañadas en la población total.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-12" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="ejercicio-12"><span class="header-section-number">4.2</span> .Ejercicio 12</h2>
+<p>De un grupo de 20 ingenieros con doctorado, se seleccionan 10 para un alto cargo de una compañía. ¿Cuál es la probabilidad de que los 10 seleccionados incluya a los 5 ingenieros que tienen las mejores calificaciones del grupo de 20?</p>
+<p><span class="math inline">N=20</span> (Total de ingenieros).</p>
+<p><span class="math inline">K=5</span> (Ingenieros con las mejores calificaciones - “éxitos” en la población).</p>
+<p><span class="math inline">n=10</span> (Tamaño de la muestra: ingenieros seleccionados).</p>
+<p><span class="math inline">x =</span> Número de ingenieros “top” incluidos en la selección.</p>
+<p>Objetivo: Calcular la probabilidad de que los 5 mejores estén incluidos <span class="math inline">(x=5)</span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-45-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-45-1" role="tab" aria-controls="tabset-45-1" aria-selected="true" href="">Tabla</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-45-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-45-2" role="tab" aria-controls="tabset-45-2" aria-selected="false" href="">Distribución de Probabilidad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-45-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-45-3" role="tab" aria-controls="tabset-45-3" aria-selected="false" href="">Función de Distribución</a></li></ul>
+<div class="tab-content">
+<div id="tabset-45-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-45-1-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>K</span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dhyper(x, m, n_rest, k) -&gt; m=éxitos, n_rest=fracasos, k=muestra</span></span>
+<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(x, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
+<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fx), <span class="dv">4</span>)</span>
+<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
+<span id="cb132-9"><a href="#cb132-9" aria-hidden="true" tabindex="-1"></a>Form.Basic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"bordered"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>)</span>
+<span id="cb132-10"><a href="#cb132-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb132-11"><a href="#cb132-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb132-12"><a href="#cb132-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb132-13"><a href="#cb132-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">x</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">fx</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">Fx</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0163</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0163</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.1354</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.1517</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.3483</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.5000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.3483</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.8483</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">4</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.1354</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9837</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold;">5</td>
+<td style="text-align: center;">0.0163</td>
+<td style="text-align: center;">1.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-45-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-45-2-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
+<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb133-6"><a href="#cb133-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de probabilidad hipergeométrica"</span>,</span>
+<span id="cb133-7"><a href="#cb133-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Ingenieros calificados seleccionados)"</span>,</span>
+<span id="cb133-8"><a href="#cb133-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-84-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-45-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-45-3-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>df_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
+<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb134-6"><a href="#cb134-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución hipergeométrica"</span>,</span>
+<span id="cb134-7"><a href="#cb134-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x"</span>,</span>
+<span id="cb134-8"><a href="#cb134-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-85-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Solución Inciso</strong> ¿Cuál es la probabilidad de que la selección incluya a los 5 ingenieros con mejores calificaciones?</p>
+<p>Esto significa <span class="math inline">P(X=5).</span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-44-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-44-1" role="tab" aria-controls="tabset-44-1" aria-selected="true" href="">Respuesta</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-44-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-44-2" role="tab" aria-controls="tabset-44-2" aria-selected="false" href="">Gráfica</a></li></ul>
+<div class="tab-content">
+<div id="tabset-44-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-44-1-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo exacto para x = 5</span></span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a>prob_exacta <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
+<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-4"><a href="#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_exacta)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>La probabilidad calculada es: 0.0163</code></pre>
+</div>
+</div>
+<p>La probabilidad de que se seleccionen exactamente a los cinco mejores ingenieros es del 1.63%.</p>
+</div>
+<div id="tabset-44-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-44-2-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>rango <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>K</span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> rango, <span class="at">y =</span> <span class="fu">dhyper</span>(rango, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n))</span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">==</span><span class="dv">5</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
+<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.35</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Cuantía"</span>) <span class="sc">+</span></span>
+<span id="cb137-5"><a href="#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">"Distribución Hipergeométrica - Inclusión de los 5 mejores"</span>) <span class="sc">+</span></span>
+<span id="cb137-6"><a href="#cb137-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-87-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La gráfica de cuantía muestra que, al seleccionar a la mitad del grupo (10 de 20), lo más probable es encontrar un equilibrio en la selección (2 o 3 ingenieros de los mejores calificados).</p>
+<p>La probabilidad de incluir a los 5 mejores simultáneamente es extremadamente baja (1.63%), representada por la pequeña barra al final de la distribución. Esto ocurre porque, aunque la muestra es grande, las combinaciones posibles que agrupan específicamente a esos 5 individuos son muy pocas en comparación con el total de combinaciones de 10 personas.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-13" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="ejercicio-13"><span class="header-section-number">4.3</span> .Ejercicio 13</h2>
+<p>Un almacén contiene diez máquinas impresoras, cuatro de las cuales están defectuosas. Una compañía selecciona al azar cinco de las máquinas, pensando que todas están en condiciones de trabajar, ¿cuál es la probabilidad de que las cinco máquinas estén en buen estado?</p>
+<p><span class="math inline">N=10</span> (Total de máquinas impresoras).</p>
+<p><span class="math inline">K=6</span>(Máquinas en buen estado en la población. Nota: Si 4 están defectuosas, 6 están bien).</p>
+<p><span class="math inline">n=5</span>(Tamaño de la muestra seleccionada).</p>
+<p><span class="math inline">x =</span> Número de máquinas en buen estado en la muestra.</p>
+<p>Objetivo: Calcular la probabilidad de que las cinco máquinas estén en buen estado.</p>
+<p><strong>Solución</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-47-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-47-1" role="tab" aria-controls="tabset-47-1" aria-selected="true" href="">Tabla</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-47-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-47-2" role="tab" aria-controls="tabset-47-2" aria-selected="false" href="">Distribución de Probabilidad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-47-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-47-3" role="tab" aria-controls="tabset-47-3" aria-selected="false" href="">Función de Distribución</a></li></ul>
 <div class="tab-content">
 <div id="tabset-47-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-47-1-tab">
-<p>¿Cuál es la probabilidad de que al menos uno tenga sello defectuoso?</p>
-<p>(Esto significa <span class="math inline">P(X \ge 1)</span>, o lo que es lo mismo, <span class="math inline">1 - P(X = 0)</span>).</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>K</span>
+<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dhyper(x, m, n_rest, k) -&gt; m=éxitos (buen estado), n_rest=fracasos, k=muestra</span></span>
+<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(x, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
+<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a>Fx <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fx), <span class="dv">4</span>)</span>
+<span id="cb138-8"><a href="#cb138-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x, fx, Fx)</span>
+<span id="cb138-9"><a href="#cb138-9" aria-hidden="true" tabindex="-1"></a>Form.Basic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"bordered"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>)</span>
+<span id="cb138-10"><a href="#cb138-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb138-11"><a href="#cb138-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb138-12"><a href="#cb138-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb138-13"><a href="#cb138-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">bold =</span> T, <span class="at">color =</span> <span class="st">"#f7f2f2"</span>, <span class="at">background =</span> <span class="st">"#5c61cc"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">x</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">fx</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">Fx</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0238</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0238</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">2</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2381</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2619</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">3</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.4762</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.7381</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">4</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.2381</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.9762</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">5</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0238</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; font-weight: bold; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">6</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">0.0000</td>
+<td style="text-align: center; font-weight: bold; color: rgba(247, 242, 242, 255) !important; background-color: rgba(92, 97, 204, 255) !important;">1.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-47-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-47-2-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>df_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">fx =</span> fx, <span class="at">xend =</span> x, <span class="at">fxend =</span> <span class="dv">0</span>)</span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fx)) <span class="sc">+</span></span>
+<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> xend, <span class="at">yend =</span> fxend), <span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb139-6"><a href="#cb139-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de probabilidad hipergeométrica"</span>,</span>
+<span id="cb139-7"><a href="#cb139-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x (Máquinas en buen estado seleccionadas)"</span>,</span>
+<span id="cb139-8"><a href="#cb139-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"f(x)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-89-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-47-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-47-3-tab">
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Ver código</summary>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>df_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">Fx =</span> Fx)</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Fx)) <span class="sc">+</span></span>
+<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">color =</span> <span class="st">"#5c61cc"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#49f5ec"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Función de distribución hipergeométrica"</span>,</span>
+<span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"x"</span>,</span>
+<span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"F(X)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-90-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Solución Inciso</strong></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-46-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-46-1" role="tab" aria-controls="tabset-46-1" aria-selected="true" href="">Respuesta</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-46-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-46-2" role="tab" aria-controls="tabset-46-2" aria-selected="false" href="">Gráfica</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-46-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-46-1" role="tab" aria-controls="tabset-46-1" aria-selected="true" href="">Respuesta</a></li></ul>
 <div class="tab-content">
 <div id="tabset-46-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-46-1-tab">
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de P(X &gt;= 1) usando el complemento: 1 - P(X = 0)</span></span>
-<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a>prob_res <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">dhyper</span>(<span class="dv">0</span>, <span class="at">m =</span> <span class="dv">3</span>, <span class="at">n =</span> <span class="dv">9</span>, <span class="at">k =</span> <span class="dv">5</span>), <span class="dv">4</span>)</span>
-<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_res)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo exacto para x = 5</span></span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>prob_exacta <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n), <span class="dv">4</span>)</span>
+<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-4"><a href="#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"La probabilidad calculada es:"</span>, prob_exacta)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>La probabilidad calculada es: 0.8409</code></pre>
+<pre><code>La probabilidad calculada es: 0.0238</code></pre>
 </div>
 </div>
-<p>La probabilidad de que al menos uno de los frascos tenga sello defectuoso es del 84.09%.</p>
-</div>
-<div id="tabset-46-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-46-2-tab">
+<p>La probabilidad de que las cinco máquinas seleccionadas estén en buen estado es del 2.38%. ## Gráfica</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Ver código</summary>
-<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>rango <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>K</span>
-<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> rango, <span class="at">y =</span> <span class="fu">dhyper</span>(rango, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n))</span>
-<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">&gt;=</span><span class="dv">1</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
-<span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Cuantía"</span>) <span class="sc">+</span></span>
-<span id="cb144-5"><a href="#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">"Distribución Hipergeométrica - Al menos 1 defectuoso"</span>) <span class="sc">+</span></span>
-<span id="cb144-6"><a href="#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>rango <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>K</span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>df_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> rango, <span class="at">y =</span> <span class="fu">dhyper</span>(rango, <span class="at">m =</span> K, <span class="at">n =</span> N <span class="sc">-</span> K, <span class="at">k =</span> n))</span>
+<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(x<span class="sc">==</span><span class="dv">5</span>,<span class="st">"Valor"</span>,<span class="st">"Resto"</span>)))) <span class="sc">+</span></span>
+<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.35</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Cuantía"</span>) <span class="sc">+</span></span>
+<span id="cb143-5"><a href="#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">"Distribución Hipergeométrica - 5 impresoras funcionales"</span>) <span class="sc">+</span></span>
+<span id="cb143-6"><a href="#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#fab27a"</span>,<span class="st">"#5c61cc"</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-93-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-92-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La gráfica de cuantía revela que, al inspeccionar una muestra representativa (5 de 12), la probabilidad de no detectar ningún error es de apenas 15.91% (barra naranja). El área resaltada en verde suma las probabilidades de hallar 1, 2 o 3 frascos defectuosos, dándonos un total de 84.09%. Esta alta probabilidad se explica porque el 25% del lote total presenta fallas; por lo tanto, en una muestra de 5, el valor esperado es de 1.25 defectuosos, haciendo que el escenario de “cero fallas” sea visualmente el menos probable.</p>
+<p>La gráfica de cuantía indica que, dado que el 40% del inventario está defectuoso, la probabilidad de seleccionar 5 máquinas y que todas resulten estar en buen estado es muy baja (2.38%).Lo más probable es que la compañía encuentre entre 2 y 4 máquinas funcionales en su pedido. El valor <span class="math inline">x=5</span> se encuentra en el extremo derecho de la distribución, lo que sugiere que la “apuesta” de la compañía de que todas estarían bien es estadísticamente arriesgada bajo estas condiciones de inventario.</p>
 </div>
 </div>
 </div>

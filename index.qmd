@@ -1399,7 +1399,99 @@ scale_fill_manual(name = "", values=c("#fab27a","#5c61cc")) + theme_bw()
 La gráfica de cuantía muestra que, con un promedio de 5 ingresos diarios, la mayor concentración de probabilidad se encuentra entre los valores 3 y 7. El área resaltada en verde ($x \le 2$) representa una probabilidad baja (12.47%), lo que indica que es poco común que la unidad reciba tan pocos pacientes en un día, siendo mucho más probable que la cifra se acerque o supere el promedio establecido.
 :::
 :::::
+## .Ejercicio 14
 
+En promedio una casa de cada 2000 en cierta zona de Barranquilla se incendia durante el año, si hay 6000 casas en dicha zona ¿Cuál es la probabilidad de que más de 3 casas se incendien durante el año?
+
+
+$n=6000$ (Número total de casas).
+
+$p=1/2000$ (Probabilidad de incendio por casa).$λ$ (Media): $n×p=6000×(1/2000)=3.$
+
+En promedio, se incendian 3 casas al año.
+
+Objetivo: Probabilidad de que se incendien más de 3 casas $(P(X>3)).$
+
+**Solución**
+
+::: panel-tabset
+
+## Tabla
+
+```{r}
+lambda <- 3
+x <- 0:10 # Tomamos hasta 10 para visualizar la tendencia
+fx <- round(dpois(x, lambda), 4)
+Fx <- round(ppois(x, lambda), 4)
+df = data.frame(x, fx, Fx)
+Form.Basic <- c("striped", "bordered", "hover", "condensed", "responsive")
+kable(df, align = "c") %>% 
+  kable_styling("striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  row_spec(0:11, bold = T, color = "#f7f2f2", background = "#5c61cc")
+```
+
+## Distribución de Probabilidad
+
+```{r}
+df_1 <- data.frame(x = x, fx = fx, xend = x, fxend = 0)
+
+ggplot(df_1, aes(x = x, y = fx)) +
+  geom_segment(aes(xend = xend, yend = fxend), color = "#5c61cc", size = 1) +
+  geom_point(color = "#49f5ec", size = 2) +
+  labs(title = "Función de probabilidad de Poisson (lambda = 3)",
+       x = "x (Número de casas incendiadas)",
+       y = "f(x)")
+```
+## Función de Distribución
+
+```{r}
+df_2 <- data.frame(x = x, Fx = Fx)
+
+ggplot(df_2, aes(x = x, y = Fx)) +
+  geom_step(color = "#5c61cc", size = 1) +
+  geom_point(color = "#49f5ec", size = 2) +
+  labs(title = "Función de distribución",
+       x = "x",
+       y = "F(X)")
+```
+
+:::
+
+**Solución Incisos**
+
+::: panel-tabset
+
+## Inciso Único
+
+¿Cuál es la probabilidad de que más de 3 casas se incendien?
+
+Esto significa $P(X>3)$, que es igual a $1−P(X≤3)$.
+
+::: panel-tabset
+
+## Respuesta
+```{r}
+# Cálculo de 1 - P(X <= 3)
+prob_mas_de_tres <- round(1 - ppois(3, lambda), 4)
+
+cat("La probabilidad calculada es:", prob_mas_de_tres)
+```
+La probabilidad de que se incendien más de 3 casas durante el año es del 35.28%.
+
+## Gráfica
+
+```{r}
+rango = 0:10
+df_3 = data.frame(x = rango, y = dpois(rango, lambda))
+ggplot(df_3, aes(x = x, y = y, fill=factor(ifelse(x>3,"Valor","Resto")))) +
+geom_bar(stat = "identity", width = 0.35) + xlab("Casas") + ylab("Probabilidad") +
+ggtitle("Distribución de Poisson - Más de 3 incendios") +
+scale_fill_manual(name = "", values=c("#fab27a","#5c61cc")) + theme_bw()
+```
+La gráfica de cuantía muestra que, dado que el promedio $(λ)$ es 3, los valores con mayor probabilidad están concentrados en 2 y 3. Sin embargo, al pedir “más de 3”, estamos sumando la “cola larga” de la derecha (barras resaltadas en color oscuro).Aunque la probabilidad individual de que se incendien, por ejemplo, 7 u 8 casas es muy baja, la suma de todas las posibilidades superiores a 3 representa un 35.28%, lo que indica que no es un evento tan improbable como podría parecer a simple vista.
+:::
+::::
 
 # .Modelo Hipergeométrico
 
@@ -1584,17 +1676,18 @@ Sin embargo, la probabilidad de vender exactamente 2 es significativa (20.28%), 
 
 ## .Ejercicio 12
 
-De un lote de 20 componentes electrónicos, donde se sabe que 5 son defectuosos, se seleccionan 4 al azar para una prueba. ¿Cuál es la probabilidad de que exactamente 2 de los seleccionados sean defectuosos?
+De un grupo de 20 ingenieros con doctorado, se seleccionan 10 para un alto cargo de una compañía. ¿Cuál es la probabilidad de que los 10 seleccionados incluya a los 5 ingenieros que tienen las mejores calificaciones del grupo de 20?
 
-Población ($N$): 20 componentes.
 
-Éxitos en población ($K$): 5 defectuosos.
+$N=20$ (Total de ingenieros).
 
-Muestra ($n$): 4 componentes.
+$K=5$ (Ingenieros con las mejores calificaciones - “éxitos” en la población).
 
-Objetivo: Probabilidad de exactamente 2 defectuosos
+$n=10$ (Tamaño de la muestra: ingenieros seleccionados).
 
-**Solución**
+$x =$ Número de ingenieros “top” incluidos en la selección.
+
+Objetivo: Calcular la probabilidad de que los 5 mejores estén incluidos $(x=5)$
 
 ::: panel-tabset
 
@@ -1603,78 +1696,93 @@ Objetivo: Probabilidad de exactamente 2 defectuosos
 ```{r}
 N <- 20
 K <- 5
-n_muestra <- 4
+n <- 10
 x <- 0:K
-fx <- round(dhyper(x, m = K, n = N - K, k = n_muestra), 4)
+# dhyper(x, m, n_rest, k) -> m=éxitos, n_rest=fracasos, k=muestra
+fx <- round(dhyper(x, m = K, n = N - K, k = n), 4)
 Fx <- round(cumsum(fx), 4)
 df = data.frame(x, fx, Fx)
+Form.Basic <- c("striped", "bordered", "hover", "condensed", "responsive")
 kable(df, align = "c") %>% 
   kable_styling("striped", full_width = F) %>%
-  row_spec(0:6, bold = T, color = "#f7f2f2", background = "#5c61cc")
+  column_spec(1, bold = T) %>%
+  row_spec(0:5, bold = T, color = "#f7f2f2", background = "#5c61cc")
 ```
 
 ## Distribución de Probabilidad
 ```{r}
 df_1 <- data.frame(x = x, fx = fx, xend = x, fxend = 0)
+
 ggplot(df_1, aes(x = x, y = fx)) +
   geom_segment(aes(xend = xend, yend = fxend), color = "#5c61cc", size = 1) +
-  geom_point(color = "#02b8fa", size = 2) +
-  labs(title = "Probabilidad Hipergeométrica (N=20, K=5, n=4)", x = "x (Defectuosos)", y = "f(x)")
+  geom_point(color = "#49f5ec", size = 2) +
+  labs(title = "Función de probabilidad hipergeométrica",
+       x = "x (Ingenieros calificados seleccionados)",
+       y = "f(x)")
 ```
 
 ## Función de Distribución
 
 ```{r}
-# Usando los datos de la tabla anterior (df)
 df_2 <- data.frame(x = x, Fx = Fx)
 
 ggplot(df_2, aes(x = x, y = Fx)) +
   geom_step(color = "#5c61cc", size = 1) +
   geom_point(color = "#49f5ec", size = 2) +
-  labs(title = "Función de distribución hipergeométrica (Lote 20)",
-       x = "x (Componentes defectuosos)",
-       y = "F(X)") +
-  theme_minimal()
+  labs(title = "Función de distribución hipergeométrica",
+       x = "x",
+       y = "F(X)")
 ```
 
 
 **Solución Inciso**
+¿Cuál es la probabilidad de que la selección incluya a los 5 ingenieros con mejores calificaciones?
+
+Esto significa $P(X=5).$
 
 ::: panel-tabset
 
 ## Respuesta
 
 ```{r}
-prob_a <- round(dhyper(2, m = 5, n = 15, k = 4), 4)
-cat("La probabilidad calculada es:", prob_a)
+# Cálculo exacto para x = 5
+prob_exacta <- round(dhyper(5, m = K, n = N - K, k = n), 4)
+
+cat("La probabilidad calculada es:", prob_exacta)
 ```
-La probabilidad de que exactamente 2 componentes sean defectuosos es del 21.67%.
+La probabilidad de que se seleccionen exactamente a los cinco mejores ingenieros es del 1.63%.
 
 ## Gráfica
 
 ```{r}
-ggplot(df, aes(x = x, y = fx, fill=factor(ifelse(x==2,"Valor","Resto")))) +
-geom_bar(stat = "identity", width = 0.4) + 
+rango = 0:K
+df_3 = data.frame(x = rango, y = dhyper(rango, m = K, n = N - K, k = n))
+ggplot(df_3, aes(x = x, y = y, fill=factor(ifelse(x==5,"Valor","Resto")))) +
+geom_bar(stat = "identity", width = 0.35) + xlab("x") + ylab("Cuantía") +
+ggtitle("Distribución Hipergeométrica - Inclusión de los 5 mejores") +
 scale_fill_manual(name = "", values=c("#fab27a","#5c61cc")) + theme_bw()
 ```
-La gráfica de cuantía para este lote muestra que el escenario más probable es encontrar 1 componente defectuoso (con un 44.8%). La barra resaltada en el valor $x=2$ representa una probabilidad moderada del 21.67%. 
+La gráfica de cuantía muestra que, al seleccionar a la mitad del grupo (10 de 20), lo más probable es encontrar un equilibrio en la selección (2 o 3 ingenieros de los mejores calificados).
 
-Visualmente, se observa que la probabilidad decae rápidamente para valores superiores a 2, lo que indica que, dada la proporción de fallas en el lote total ($25\%$), es poco probable que la muestra de 4 contenga más de la mitad de componentes dañados.
+La probabilidad de incluir a los 5 mejores simultáneamente es extremadamente baja (1.63%), representada por la pequeña barra al final de la distribución. Esto ocurre porque, aunque la muestra es grande, las combinaciones posibles que agrupan específicamente a esos 5 individuos son muy pocas en comparación con el total de combinaciones de 10 personas.
 
 :::
 ::::
 
 ## .Ejercicio 13
 
-En un grupo de 15 empleados, 10 son hombres y 5 son mujeres. Si se eligen 3 empleados al azar para un comité, ¿cuál es la probabilidad de que el comité esté formado por exactamente 2 mujeres?
+Un almacén contiene diez máquinas impresoras, cuatro de las cuales están defectuosas. Una compañía selecciona al azar cinco de las máquinas, pensando que todas están en condiciones de trabajar, ¿cuál es la probabilidad de que las cinco máquinas estén en buen estado?
 
-Población ($N$): 15 empleados.
+$N=10$ (Total de máquinas impresoras).
 
-Éxitos en población ($K$): 5 mujeres.
+$K=6$(Máquinas en buen estado en la población. Nota: Si 4 están defectuosas, 6 están bien).
 
-Muestra ($n$): 3 empleados.
+$n=5$(Tamaño de la muestra seleccionada).
 
-Objetivo: Probabilidad de exactamente 2 mujeres.
+$x =$ Número de máquinas en buen estado en la muestra.
+
+Objetivo: Calcular la probabilidad de que las cinco máquinas estén en buen estado.
+
 
 **Solución**
 
@@ -1701,100 +1809,13 @@ kable(df, align = "c") %>%
 ## Distribución de Probabilidad
 
 ```{r}
-df_c1 <- data.frame(x = x, fx = fx, xend = x, fxend = 0)
-ggplot(df_c1, aes(x = x, y = fx)) +
-  geom_segment(aes(xend = xend, yend = fxend), color = "#5c61cc", size = 1) +
-  geom_point(color = "#02b8fa", size = 2) +
-  labs(title = "Comité de Empleados (Mujeres)", x = "x (Mujeres)", y = "f(x)")
-```
-## Función de Distribución
-
-```{r}
-# Usando los datos de la tabla df_comite
-df_c2 <- data.frame(x = x, Fx = Fx)
-
-ggplot(df_c2, aes(x = x, y = Fx)) +
-  geom_step(color = "#5c61cc", size = 1) +
-  geom_point(color = "#49f5ec", size = 2) +
-  labs(title = "Función de distribución acumulada (Comité)",
-       x = "x (Mujeres seleccionadas)",
-       y = "F(X)") +
-  theme_minimal()
-```
-
-
-**Solución Inciso**
-
-::: panel-tabset
-
-## Respuesta
-
-```{r}
-prob_b <- round(dhyper(2, m = 5, n = 10, k = 3), 4)
-cat("La probabilidad calculada es:", prob_b)
-```
-La probabilidad de elegir exactamente 2 mujeres para el comité es del 21.98%.
-
-## Gráfica
-```{r}
-x <- 0:3
-fx <- dhyper(x, m = 5, n = 10, k = 3)
-
-df_comite <- data.frame(x, fx)
-```
-
-
-```{r}
-ggplot(df_comite, aes(x = x, y = fx, fill = factor(ifelse(x == 2, "Valor", "Resto")))) +
-geom_bar(stat = "identity", width = 0.4) +
-scale_fill_manual(name = "", values = c("#fab27a", "#5c61cc")) +
-theme_bw()
-```
-En esta distribución, observamos que las barras más altas corresponden a $x=1$ y $x=0$. Al elegir solo a 3 personas de un grupo donde las mujeres son minoría ($1/3$ del total), la gráfica nos muestra que lo más esperado es que el comité tenga 1 mujer o ninguna. La probabilidad de tener exactamente 2 mujeres (21.98%) se muestra como una barra de altura media, indicando que, aunque no es el resultado más probable, es una posibilidad real en el muestreo aleatorio.
-:::
-::::
-
-## .Ejercicio 14
-
-Un inspector de calidad examina una muestra de 5 frascos de un lote de 12, de los cuales 3 tienen sellos defectuosos. ¿Cuál es la probabilidad de que al menos uno tenga sello defectuoso?
-
-Población ($N$): 12 frascos.
-
-Éxitos en población ($K$): 3 sellos defectuosos.
-
-Muestra ($n$): 5 frascos.
-
-Objetivo: Probabilidad de al menos uno defectuoso ($x \ge 1$).
-
-**Solución**
-
-::: panel-tabset
-
-## Tabla
-
-```{r}
-lambda <- 3
-x <- 0:10 # Tomamos hasta 10 para visualizar la tendencia
-fx <- round(dpois(x, lambda), 4)
-Fx <- round(ppois(x, lambda), 4)
-df = data.frame(x, fx, Fx)
-Form.Basic <- c("striped", "bordered", "hover", "condensed", "responsive")
-kable(df, align = "c") %>% 
-  kable_styling("striped", full_width = F) %>%
-  column_spec(1, bold = T) %>%
-  row_spec(0:11, bold = T, color = "#f7f2f2", background = "#5c61cc")
-```
-
-## Distribución de Probabilidad
-
-```{r}
 df_1 <- data.frame(x = x, fx = fx, xend = x, fxend = 0)
 
 ggplot(df_1, aes(x = x, y = fx)) +
   geom_segment(aes(xend = xend, yend = fxend), color = "#5c61cc", size = 1) +
-  geom_point(color = "#02b8fa", size = 2) +
+  geom_point(color = "#49f5ec", size = 2) +
   labs(title = "Función de probabilidad hipergeométrica",
-       x = "x (Frascos defectuosos detectados)",
+       x = "x (Máquinas en buen estado seleccionadas)",
        y = "f(x)")
 ```
 ## Función de Distribución
@@ -1810,43 +1831,32 @@ ggplot(df_2, aes(x = x, y = Fx)) +
        y = "F(X)")
 ```
 
-:::
 
-**Solución Incisos**
-
-::::: panel-tabset
-
-## Inciso Único
-
-¿Cuál es la probabilidad de que al menos uno tenga sello defectuoso? 
-
-(Esto significa $P(X \ge 1)$, o lo que es lo mismo, $1 - P(X = 0)$).
+**Solución Inciso**
 
 ::: panel-tabset
 
 ## Respuesta
+
 ```{r}
-# Cálculo de P(X >= 1) usando el complemento: 1 - P(X = 0)
-prob_res <- round(1 - dhyper(0, m = 3, n = 9, k = 5), 4)
+# Cálculo exacto para x = 5
+prob_exacta <- round(dhyper(5, m = K, n = N - K, k = n), 4)
 
-cat("La probabilidad calculada es:", prob_res)
+cat("La probabilidad calculada es:", prob_exacta)
 ```
-La probabilidad de que al menos uno de los frascos tenga sello defectuoso es del 84.09%.
-
+La probabilidad de que las cinco máquinas seleccionadas estén en buen estado es del 2.38%.
 ## Gráfica
-
 ```{r}
 rango = 0:K
 df_3 = data.frame(x = rango, y = dhyper(rango, m = K, n = N - K, k = n))
-ggplot(df_3, aes(x = x, y = y, fill=factor(ifelse(x>=1,"Valor","Resto")))) +
-geom_bar(stat = "identity", width = 0.4) + xlab("x") + ylab("Cuantía") +
-ggtitle("Distribución Hipergeométrica - Al menos 1 defectuoso") +
+ggplot(df_3, aes(x = x, y = y, fill=factor(ifelse(x==5,"Valor","Resto")))) +
+geom_bar(stat = "identity", width = 0.35) + xlab("x") + ylab("Cuantía") +
+ggtitle("Distribución Hipergeométrica - 5 impresoras funcionales") +
 scale_fill_manual(name = "", values=c("#fab27a","#5c61cc")) + theme_bw()
 ```
-
-La gráfica de cuantía revela que, al inspeccionar una muestra representativa (5 de 12), la probabilidad de no detectar ningún error es de apenas 15.91% (barra naranja). El área resaltada en verde suma las probabilidades de hallar 1, 2 o 3 frascos defectuosos, dándonos un total de 84.09%.
-Esta alta probabilidad se explica porque el 25% del lote total presenta fallas; por lo tanto, en una muestra de 5, el valor esperado es de 1.25 defectuosos, haciendo que el escenario de "cero fallas" sea visualmente el menos probable.
-
+La gráfica de cuantía indica que, dado que el 40% del inventario está defectuoso, la probabilidad de seleccionar 5 máquinas y que todas resulten estar en buen estado es muy baja (2.38%).Lo más probable es que la compañía encuentre entre 2 y 4 máquinas funcionales en su pedido. El valor $x=5$ se encuentra en el extremo derecho de la distribución, lo que sugiere que la “apuesta” de la compañía de que todas estarían bien es estadísticamente arriesgada bajo estas condiciones de inventario.
 :::
 ::::
+
+
 
